@@ -36,7 +36,7 @@ CNI_PROVIDER = "weave"
 # cluster size. Do this before starting your cluster
 # provisioning.
 MASTER_COUNT = 1
-WORKER_COUNT = 2
+WORKER_COUNT = 1
 
 # Change these values if you wish to play with the 
 # VMs memory resources.
