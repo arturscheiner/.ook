@@ -3,8 +3,8 @@
 # description: this Vagrantfile creates a cluster with masters and workers
 # created by Artur Scheiner - artur.scheiner@gmail.com
 
-require_relative 'kvshell.rb'
-require_relative 'kvtools.rb'
+require_relative 'shell.rb'
+require_relative 'tools.rb'
 
 class KvLab
 

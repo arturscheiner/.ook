@@ -3,8 +3,8 @@
 # description: this Vagrantfile creates a cluster with masters and workers
 # created by Artur Scheiner - artur.scheiner@gmail.com
 
-require_relative 'kvlab.conf.rb'
-require_relative 'lib/rb/kvlab.rb'
+require_relative 'conf.rb'
+require_relative 'lab.rb'
 
 Vagrant.configure("2") do |config|
 
