@@ -58,7 +58,7 @@ WORKER_NAME = "kv-worker"
 
 # Change these values if you wish to play with the
 # networking settings of your cluster 
-KV_LAB_NETWORK = "192.168.121.0"
+KV_LAB_NETWORK = "10.8.8.0"
 
 # This value changes the intra-pod network
 POD_CIDR = "172.18.0.0/16"
