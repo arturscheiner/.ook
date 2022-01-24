@@ -43,7 +43,7 @@ class KvLab
           #puts "---- 1 Scaler Node"
           #puts "The Scaler #{node} Ip is #{ip}"
         end
-        config.vm.synced_folder ".", "/vagrant"
+        config.vm.synced_folder ".ook", "/vagrant"
         config.vm.define "#{SCALER_NAME}-#{node}" do |scaler|    
           scaler.vm.box = BOX_XTR_IMAGE
           scaler.vm.provider VM_PROVIDER
@@ -72,7 +72,7 @@ class KvLab
             end
           end
           if ARGV[0] == "destroy"
-            #puts "Deleting .kv directory"
+            #puts "Deleting .ook directory"
             @kvtools.cleanKvDir()     
           else
             @kvtools.addToHosts(ip,scaler.vm.hostname)
@@ -89,7 +89,7 @@ class KvLab
   
         #puts "---- 1 Storer Node"
         #puts "The Storer #{node} Ip is #{ip}"
-        config.vm.synced_folder ".", "/vagrant"
+        config.vm.synced_folder ".ook", "/vagrant"
         config.vm.define "#{STORER_NAME}-#{node}" do |storer|    
           storer.vm.box = BOX_XTR_IMAGE
           storer.vm.provider VM_PROVIDER
@@ -118,7 +118,7 @@ class KvLab
             end
           end
           if ARGV[0] == "destroy"
-            puts "Deleting .kv directory"
+            puts "Deleting .ook directory"
             @kvtools.cleanKvDir()     
           else
             @kvtools.addToHosts(ip,storer.vm.hostname)
@@ -135,7 +135,7 @@ class KvLab
   
         #puts "The Master #{node} Ip is #{ip}"
 
-        config.vm.synced_folder ".", "/vagrant"
+        config.vm.synced_folder ".ook", "/vagrant"
         config.vm.define "#{MASTER_NAME}-#{node}" do |master|
           master.vm.box = BOX_K8S_IMAGE
           master.vm.provider VM_PROVIDER
@@ -166,7 +166,7 @@ class KvLab
             end
           end
           if ARGV[0] == "destroy"
-            #puts "Deleting .kv directory"
+            #puts "Deleting .ook directory"
             @kvtools.cleanKvDir()     
           else
             @kvtools.addToHosts(ip,master.vm.hostname)
@@ -185,7 +185,7 @@ class KvLab
   
         #puts "The Worker #{node} Ip is #{ip}"
 
-        config.vm.synced_folder ".", "/vagrant"  
+        config.vm.synced_folder ".ook", "/vagrant"  
         config.vm.define "#{WORKER_NAME}-#{node}" do |worker|
           worker.vm.box = BOX_K8S_IMAGE
           worker.vm.provider VM_PROVIDER
@@ -210,7 +210,7 @@ class KvLab
             end
           end
           if ARGV[0] == "destroy"
-            #puts "Deleting .kv directory"
+            #puts "Deleting .ook directory"
             @kvtools.cleanKvDir()     
           else
             @kvtools.addToHosts(ip,worker.vm.hostname)

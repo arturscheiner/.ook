@@ -27,7 +27,7 @@ class KvShell
         export KV_MASTER_NAME="#{MASTER_NAME}"
         export KV_STORER_NAME="#{STORER_NAME}"
 
-        export KV_DIR="/mnt/.kv"
+        export KV_DIR="/mnt/.ook"
         export KV_STORER_SH="$KV_DIR/sh/storer.sh"
         export KV_SCALER_SH="$KV_DIR/sh/scaler.sh"
         export KV_COMMON_SH="$KV_DIR/sh/common.sh"
@@ -37,7 +37,7 @@ class KvShell
         export KV_STORAGE="$KV_STORER_NAME-0"
 
         printenv | grep -E '^KV_' | sed 's/^/export /' >> ~/.bash_profile
-        cat /vagrant/.kv/hosts >> /etc/hosts
+        cat /vagrant/hosts >> /etc/hosts
         mkdir -p $KV_DIR/sh
 
         SCRIPT
