@@ -18,15 +18,15 @@ class KvTools
     end
 
     def addToHosts(ip,hostname)
-        hosts=".kv/hosts"
-        Dir.mkdir('.kv') unless File.exists?('.kv')
+        hosts=".ook/hosts"
+        Dir.mkdir('.ook') unless File.exists?('.ook')
         File.new(hosts, "w") unless File.exists?(hosts)
 
         line_exist=File.readlines(hosts).grep(/#{ip}/).size
 
         if line_exist = 0
-            #puts "this  #{ip} and #{hostname} is already in .kv/hosts file"
-            #puts "updatind .kv/hosts file with #{ip} and #{hostname}"
+            #puts "this  #{ip} and #{hostname} is already in .ook/hosts file"
+            #puts "updatind .ook/hosts file with #{ip} and #{hostname}"
             File.open(hosts, "a") do |line|
                 line.puts "#{ip} #{hostname} #{hostname}.lab.local #{hostname}.local"
             end
@@ -34,15 +34,15 @@ class KvTools
     end
  
     def addToFile(type,hostname)
-      ntype=".kv/#{type}"
-      Dir.mkdir('.kv') unless File.exists?('.kv')
+      ntype=".ook/#{type}"
+      Dir.mkdir('.ook') unless File.exists?('.ook')
       File.new(ntype, "w") unless File.exists?(ntype)
 
       line_exist=File.readlines(ntype).grep(/#{hostname}/).size
 
       if line_exist = 0
-          #puts "this #{hostname} is already in .kv/#{type} file"
-          #puts "updatind .kv/#{type} file #{hostname}"
+          #puts "this #{hostname} is already in .ook/#{type} file"
+          #puts "updatind .ook/#{type} file #{hostname}"
           File.open(ntype, "a") do |line|
               line.puts "#{hostname}"
           end
@@ -50,7 +50,7 @@ class KvTools
   end
     
     def cleanKvDir()
-        kv_dir=".kv"
+        kv_dir=".ook"
         FileUtils.remove_dir(kv_dir) if File.directory?(kv_dir)
     end
 
