@@ -29,7 +29,7 @@ else
         awk -v ln=$x 'NR>=ln && NR<=ln+1' $KV_DIR/kubeadm-init.log | tee $KV_DIR/workers-join
     else
         sed "s+lab.local:6443+lab.local:6443 --apiserver-advertise-address $KV_THIS_IP+g" $KV_DIR/masters-join-default > $KV_DIR/masters-join-$KV_THIS_NODE
-        #$(cat $KV_DIR/masters-join-$KV_THIS_NODE | sed -e 's/^[ \t]*//' | tr '\n' ' ' | sed -e 's/ \\ / /g')
+        
         cat $KV_DIR/masters-join-$KV_THIS_NODE | bash
     fi
 fi

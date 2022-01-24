@@ -4,7 +4,6 @@
 # description: this is the workers script file
 # created by Artur Scheiner - artur.scheiner@gmail.com
 
-#$(cat $KV_DIR/workers-join | sed -e 's/^[ \t]*//' | tr '\n' ' ' | sed -e 's/ \\ / /g')
 cat $KV_DIR/workers-join | bash
 
 if grep -E "KUBELET_EXTRA_ARGS=" /etc/default/kubelet ; then
