@@ -25,8 +25,6 @@ class KvTools
         line_exist=File.readlines(hosts).grep(/#{ip}/).size
 
         if line_exist = 0
-            #puts "this  #{ip} and #{hostname} is already in .ook/hosts file"
-            #puts "updatind .ook/hosts file with #{ip} and #{hostname}"
             File.open(hosts, "a") do |line|
                 line.puts "#{ip} #{hostname} #{hostname}.lab.local #{hostname}.local"
             end
@@ -41,8 +39,6 @@ class KvTools
       line_exist=File.readlines(ntype).grep(/#{hostname}/).size
 
       if line_exist = 0
-          #puts "this #{hostname} is already in .ook/#{type} file"
-          #puts "updatind .ook/#{type} file #{hostname}"
           File.open(ntype, "a") do |line|
               line.puts "#{hostname}"
           end
