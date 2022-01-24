@@ -12,7 +12,6 @@ class KvLab
         @kvshell = KvShell.new()
         @kvtools = KvTools.new()
 
-
         if MASTER_COUNT >= 2
           $sIPs = @kvtools.iPSa("scaler",1)
         else
@@ -21,17 +20,6 @@ class KvLab
 
         $mIPs = @kvtools.iPSa("master",MASTER_COUNT)
         $wIPs = @kvtools.iPSa("worker",WORKER_COUNT)
-
-        #puts "********** #{KVMSG.green}**********"
-  
-        #checkmark = "\u2713"
-        #puts checkmark.force_encoding('utf-8').green.bold.blink
-  
-        #puts "---- Provisioned with k8s #{KUBE_VERSION.yellow}".blue
-        #puts "---- Container runtime is: #{CONTAINER_RUNTIME.yellow}"
-        #puts "---- CNI Provider is: #{CNI_PROVIDER.yellow}"
-        #puts "---- #{MASTER_COUNT} Masters Nodes"
-        #puts "---- #{WORKER_COUNT} Worker(s) Node(s)" unless MASTER_COUNT == 5
     end
 
     def createScaler(config,script)
@@ -39,10 +27,6 @@ class KvLab
       node = 0
       ip = @kvtools.defineIp("scaler",node,KV_LAB_NETWORK)
   
-        if MASTER_COUNT != 1
-          #puts "---- 1 Scaler Node"
-          #puts "The Scaler #{node} Ip is #{ip}"
-        end
         config.vm.synced_folder ".ook", "/vagrant"
         config.vm.define "#{SCALER_NAME}-#{node}" do |scaler|    
           scaler.vm.box = BOX_XTR_IMAGE
@@ -72,7 +56,6 @@ class KvLab
             end
           end
           if ARGV[0] == "destroy"
-            #puts "Deleting .ook directory"
             @kvtools.cleanKvDir()     
           else
             @kvtools.addToHosts(ip,scaler.vm.hostname)
@@ -87,8 +70,6 @@ class KvLab
       node = 0
       ip = @kvtools.defineIp("storer",node,KV_LAB_NETWORK)
   
-        #puts "---- 1 Storer Node"
-        #puts "The Storer #{node} Ip is #{ip}"
         config.vm.synced_folder ".ook", "/vagrant"
         config.vm.define "#{STORER_NAME}-#{node}" do |storer|    
           storer.vm.box = BOX_XTR_IMAGE
@@ -133,8 +114,6 @@ class KvLab
       (0..MASTER_COUNT-1).each do |node|
         ip = @kvtools.defineIp("master",node,KV_LAB_NETWORK)
   
-        #puts "The Master #{node} Ip is #{ip}"
-
         config.vm.synced_folder ".ook", "/vagrant"
         config.vm.define "#{MASTER_NAME}-#{node}" do |master|
           master.vm.box = BOX_K8S_IMAGE
@@ -166,7 +145,7 @@ class KvLab
             end
           end
           if ARGV[0] == "destroy"
-            #puts "Deleting .ook directory"
+
             @kvtools.cleanKvDir()     
           else
             @kvtools.addToHosts(ip,master.vm.hostname)
@@ -182,8 +161,6 @@ class KvLab
     def createWorker(config,script,common)
       (0..WORKER_COUNT-1).each do |node|
         ip = @kvtools.defineIp("worker",node,KV_LAB_NETWORK)
-  
-        #puts "The Worker #{node} Ip is #{ip}"
 
         config.vm.synced_folder ".ook", "/vagrant"  
         config.vm.define "#{WORKER_NAME}-#{node}" do |worker|
@@ -210,7 +187,7 @@ class KvLab
             end
           end
           if ARGV[0] == "destroy"
-            #puts "Deleting .ook directory"
+
             @kvtools.cleanKvDir()     
           else
             @kvtools.addToHosts(ip,worker.vm.hostname)
