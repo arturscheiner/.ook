@@ -42,6 +42,8 @@ class KvLab
             lv.driver = "kvm"
             lv.video_vram = 256
             lv.forward_ssh_port = true
+            lv.management_network_name = 'ook_net'
+            lv.management_network_address = "#{KV_LAB_NETWORK}/24"
           end 
 
           scaler.vm.provider :virtualbox do |vb|
@@ -86,6 +88,8 @@ class KvLab
             lv.video_vram = 256
             lv.forward_ssh_port = true
             lv.mgmt_attach = false
+            lv.management_network_name = 'ook_net'
+            lv.management_network_address = "#{KV_LAB_NETWORK}/24"
           end 
 
           storer.vm.provider :virtualbox do |vb|
@@ -130,6 +134,8 @@ class KvLab
             lv.cpus = MASTER_VCPUS
             lv.memory = MASTER_MEMORY
             lv.disk_bus = "virtio"
+            lv.management_network_name = 'ook_net'
+            lv.management_network_address = "#{KV_LAB_NETWORK}/24"
             #lv.forward_ssh_port = true
             lv.mgmt_attach = false
           end 
