@@ -130,7 +130,7 @@ class KvLab
             lv.memory = MASTER_MEMORY
             lv.disk_bus = "virtio"
             lv.management_network_name = 'ook_net'
-            lv.management_network_address = KV_LAB_NETWORK
+            lv.management_network_address = "#{KV_LAB_NETWORK}/24"
             #lv.forward_ssh_port = true
           end 
 
