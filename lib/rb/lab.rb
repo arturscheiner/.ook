@@ -129,8 +129,8 @@ class KvLab
             lv.cpus = MASTER_VCPUS
             lv.memory = MASTER_MEMORY
             lv.disk_bus = "virtio"
-            libvirt.management_network_name = 'ook_net'
-            libvirt.management_network_address = KV_LAB_NETWORK
+            lv.management_network_name = 'ook_net'
+            lv.management_network_address = KV_LAB_NETWORK
             #lv.forward_ssh_port = true
           end 
 
