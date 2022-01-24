@@ -123,7 +123,6 @@ class KvLab
   
           if MASTER_COUNT == 1
             master.vm.network "forwarded_port", guest: 6443, host: 6443
-            server = master.vm.hostname
           end
           
           master.vm.provider :libvirt do |lv|
@@ -198,5 +197,4 @@ class KvLab
         end
       end
     end
-    
-  end
+end

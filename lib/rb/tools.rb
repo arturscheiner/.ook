@@ -24,7 +24,7 @@ class KvTools
 
         line_exist=File.readlines(hosts).grep(/#{ip}/).size
 
-        if line_exist = 0
+        if line_exist == 0
             File.open(hosts, "a") do |line|
                 line.puts "#{ip} #{hostname} #{hostname}.lab.local #{hostname}.local"
             end
@@ -38,12 +38,12 @@ class KvTools
 
       line_exist=File.readlines(ntype).grep(/#{hostname}/).size
 
-      if line_exist = 0
+      if line_exist == 0
           File.open(ntype, "a") do |line|
               line.puts "#{hostname}"
           end
       end
-  end
+    end
     
     def cleanKvDir()
         kv_dir=".ook"
@@ -60,7 +60,7 @@ class KvTools
 
     def colorize(text, color_code)
         "\e[#{color_code}m#{text}\e[0m"
-       end
+    end
       
       def red(text); colorize(text, 31); end
       def green(text); colorize(text, 32); end
@@ -94,4 +94,4 @@ class String
     def underline; "\e[4m#{self}\e[24m" end
     def blink; "\e[5m#{self}\e[25m" end
     def reverse_color; "\e[7m#{self}\e[27m" end
-  end
+end
