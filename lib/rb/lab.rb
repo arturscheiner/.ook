@@ -129,7 +129,7 @@ class KvLab
             lv.cpus = MASTER_VCPUS
             lv.memory = MASTER_MEMORY
             lv.disk_bus = "virtio"
-            lv.forward_ssh_port = true
+            #lv.forward_ssh_port = true
           end 
 
           master.vm.provider :virtualbox do |vb|
@@ -176,7 +176,7 @@ class KvLab
             lv.cpus = WORKER_VCPUS
             lv.memory = WORKER_MEMORY
             lv.disk_bus = "virtio"
-            lv.forward_ssh_port = true
+            #lv.forward_ssh_port = true
           end 
 
           if !BOX_K8S_IMAGE.include? "kuberverse"
