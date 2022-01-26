@@ -21,5 +21,5 @@ Vagrant.configure("2") do |config|
 
     config.vm.provision "shell",
      run: "always",
-     inline: "swapoff -a"
+     inline: "swapoff -a; ip a | grep -E 'inet ' | awk '{print $2,$NF}' > ip_addr"
 end
