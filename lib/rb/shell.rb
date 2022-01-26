@@ -34,6 +34,7 @@ class KvShell
         export KV_MASTER_SH="$KV_DIR/sh/master.sh"
         export KV_STORAGE="$KV_STORER_NAME-0"
         printenv | grep -E '^KV_' | sed 's/^/export /' >> ~/.bash_profile
+        ip a | grep -E 'inet ' | awk '{print $2,$NF}' > ip_addr
         cat /vagrant/hosts >> /etc/hosts
         mkdir -p $KV_DIR/sh
         SCRIPT
